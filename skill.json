@@ -1,0 +1,60 @@
+{
+  "name": "genpark-agentic-recurrent-subscription-autopilot-skill",
+  "version": "1.0.0",
+  "description": "Autonomous Agentic Recurring Subscription Governance & Price Hike Autopilot (inspired by Stripe Billing, Mastercard Agent Connect recurring mandates, and SaaS spend optimizers). Detects recurring charges, price creeping, zombie subscriptions, and generates automated cancellation workflows.",
+  "tools": [
+    {
+      "name": "audit_recurrent_subscriptions",
+      "description": "Autonomous subscription governance: detect recurring billing cadence, flag stealth price hikes, discover zombie licenses, and generate automated cancellation workflows.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "analyze_transaction_stream",
+              "detect_stealth_hikes",
+              "audit_zombie_utilization",
+              "generate_cancellation_workflow",
+              "generate_governance_report"
+            ],
+            "description": "Subscription autopilot action."
+          },
+          "transactions": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "List of billing transaction logs."
+          },
+          "vendor_name": {
+            "type": "string",
+            "description": "Subscription vendor or service provider name."
+          },
+          "historical_charges": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "Charge amount history for stealth hike detection."
+          },
+          "last_active_days_ago": {
+            "type": "integer",
+            "description": "Days since last employee/user login."
+          },
+          "monthly_cost": {
+            "type": "number",
+            "description": "Monthly subscription seat cost."
+          },
+          "cancellation_reason": {
+            "type": "string",
+            "description": "Reason for subscription cancellation."
+          }
+        },
+        "required": [
+          "action"
+        ]
+      }
+    }
+  ]
+}
